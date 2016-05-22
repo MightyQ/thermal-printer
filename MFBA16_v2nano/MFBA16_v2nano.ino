@@ -193,10 +193,8 @@ void get_image(void)
 				for(frame_index = 0; frame_index < 128;frame_index++)
 					{
 						myFile.write(xm_frame[frame_index + 3]);
-            delayMicroseconds(20);
 					
 					}
-					            delay(50);
 				// send the ACK
 				Serial.write(ACK);
 				

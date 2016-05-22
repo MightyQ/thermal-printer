@@ -46,18 +46,20 @@ void setup() {
     //size(1920, 1440);  //1920 x 1080 HD camera resolution
     println(Serial.list());  //show the serial ports
     background(255);  // white background (borders)
-    String[] cameras = Capture.list();  // find out all of available cameras (over 100)
+    println(Capture.list());
+    
+    /*String[] cameras = Capture.list();  // find out all of available cameras (over 100)
 
     for (int i = 0; i < cameras.length; i++) {
       println(i);
       println(cameras[i]);
-    }
+    }*/
     
     cam = new Capture(this, 1920, 1080, "Microsoft® LifeCam Studio(TM)", 30);    
     //cam = new Capture(this, cameras[1]);
     println("YEW");
     
-    com_port = new Serial(this, "/dev/cu.usbmodem142341", 38400);
+    com_port = new Serial(this, "/dev/cu.usbmodem1421", 38400);
           
     cam.start();
 }
@@ -159,10 +161,10 @@ void getImage() {
       translate(385, 0);  // translate the image 385px to the right, 0px down
       rotate(PI/2);  // rotate the image 90 degrees
       image(edgeImg, 0, 0);  // put image onto the canvas
-      image(edgeImg, 0, -385);  // put image onto the canvas
+      //image(edgeImg, 0, -385);  // put image onto the canvas
 
-      PImage finalpic = get(150, 0, 385, 684);  //get image
-      //PImage finalpic = get(0,0,385,684);
+      //PImage finalpic = get(150, 0, 385, 684);  //get image
+      PImage finalpic = get(0,0,385,684);
       finalpic.save("edgedetect.png");  // save the processed image
       
       PImage doubles = get(0, 0, 1000, 1000);
@@ -318,7 +320,7 @@ void transmit_image()
             
             
           case XM_RUN:
-              if(buffer_index < (IMAGE_SIZE - 128))
+              if(buffer_index < (IMAGE_SIZE))
                 {
                   format_xmframe(data,buffer_index);
                   for(byte_count = 0; byte_count < 133;byte_count++)

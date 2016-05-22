@@ -189,6 +189,8 @@ void get_image(void)
 			  q.setRGB(qduino::GREEN);
         
 				// write 128 bytes to image file
+
+        // myFile.write(xm_frame, 128);
 				
 				for(frame_index = 0; frame_index < 128;frame_index++)
 					{

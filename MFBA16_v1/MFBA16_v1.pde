@@ -320,7 +320,7 @@ void transmit_image()
             
             
           case XM_RUN:
-              if(buffer_index < (IMAGE_SIZE))
+              if(buffer_index < (IMAGE_SIZE)) // used to be IMAGE_SIZE -128
                 {
                   format_xmframe(data,buffer_index);
                   for(byte_count = 0; byte_count < 133;byte_count++)

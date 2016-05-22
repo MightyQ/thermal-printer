@@ -142,7 +142,7 @@ void print_image(void)
 		{
     
       q.ledOff();
-			printer.printBitmap(photo_width, photo_height, dynamic_cast<Stream*>(&myFile));
+			printer.printBitmap(photo_width, photo_height, &myFile);
 
 			myFile.close();
 			q.setRGB(qduino::BLUE);
@@ -187,13 +187,6 @@ void get_image(void)
 		if(frame_status == FRAME_OK)
 			{
 			  q.setRGB(qduino::GREEN);
-        
-        //frameNums++;
-        
-      /*  if (frameNums % 10 == 0) {
-          printer.print(frameNums);
-          printer.print(F(" "));
-        }*/
         
 				// write 128 bytes to image file
 				

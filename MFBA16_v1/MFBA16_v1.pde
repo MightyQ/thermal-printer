@@ -351,11 +351,15 @@ void transmit_image()
                        //delay(20);
                       
                      }
-                   else
+                   else if(rxd == NAK)
                   {
                      print("frame NACK\r\n"); 
                      delay(200);
                   
+                  }
+                  else {
+                    println("got weird stuff");
+                    com_port.clear();
                   }
                 } 
                else  // end of image
@@ -376,6 +380,7 @@ void transmit_image()
                    if(rxd == ACK)
                     {
                       print("EOT ACK\r\n"); 
+                      com_port.clear();
                       transfer_done = 1;
                        frame_count = 1;      // reset frame counter in format xframe
                     }
